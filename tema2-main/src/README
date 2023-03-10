@@ -1,0 +1,24 @@
+# Copyright Stefanita Ionita, 334CA, 2022-2023
+
+Tema este formata din 3 clase:
+- Tema2:
+    Parseaza datele de intrare, creeaza BufferedWriters si BufferedReader si folosesc
+    un ForkJoinPool pentru a gestiona threadurile de nivel 2.
+    Am folosit un ArrayList de OrderThread cu ajutorul caruia pornesc threadurile
+    si sa le dau join.
+    In final, inchid Writele si Readerul, de asemenea shutdown la ForkJoinPool.
+- OrderThread:
+    Primeste ca parametri numele fisierelor pentru orders.txt, order_products.txt,
+    numarul P de threaduri, start si end, ForkJoinPool, Writerele pentru orders_out
+    si order_products_out si readerul partajat orders_in.
+    Reprezinta threadurile de nivel 1. Detalii despre implementarea citirii
+    comenzilor o voi scrie in README_BONUS.
+    Daca numarul de produse este diferit de 0, creez un task (un thread de nivel 2) si
+    adaug intr-un ArrayList taskurile pentru a le putea da join. Cand conditia este
+    indeplinita (numarul de produse e diferit de 0) adaug intr-un ArrayList linia citita
+    pentru a putea adauga shipped la final.
+- ProductTask:
+    Primeste numele comenzii orderID, numarul de produse din comanda, numele fisierului
+    order_products.txt si writerul pentru order_products_out.
+    Am creat un BufferedReader pentru a putea citi produsele din fisierul order_products.txt.
+    Am verificat daca numele comenzii primite coincide si adauga ",shipped" in cazul favorabil.

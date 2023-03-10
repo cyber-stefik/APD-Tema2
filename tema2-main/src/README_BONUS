@@ -1,0 +1,7 @@
+# Copyright Stefanita Ionita, 334CA, 2022-2023
+
+Am folosit un file handler partajat pentru cele P threaduri.
+Astfel, fiecare thread va prelua cate o comanda cand threadul este liber.
+Folosind BufferReader, threadurile vor sti mereu care este urmatoarea comanda
+si nu vor citi de mai multe ori fisierul, parcurgerea fisierului fiind facuta
+o singura data paralel.
